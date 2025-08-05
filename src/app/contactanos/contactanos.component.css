@@ -1,0 +1,7 @@
+.bg-gradient-custom {
+    background: linear-gradient(0deg, #81B7E9, #FFF);
+}
+.bg-form {
+  background-color: rgb(242, 249, 255); /* Tu color claro */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}

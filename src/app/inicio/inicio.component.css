@@ -1,0 +1,6 @@
+.bg-gradient-custom {
+    background: linear-gradient(0deg, #81B7E9, #E8ECFF);
+}
+.min-vh-70 {
+  min-height: 60vh;
+}
