@@ -7,15 +7,20 @@
 
     <div class="login-right d-flex flex-column justify-content-center p-5">
       <h4 class="text-primary text-center fs-2 fw-normal mb-4">INICIAR SESIÓN</h4>
-      <form (ngSubmit)="login($event)">
+      <form [formGroup]="form" (ngSubmit)="login()">
         <div style="width: 70%;" class="mx-auto">
           <div class="mb-3">
-          <input type="text" class="form-control" placeholder="USUARIO">
+          <input type="text" class="form-control" placeholder="USUARIO" formControlName="email">
         </div>
         <div class="mb-4">
-          <input type="password" class="form-control" placeholder="CONTRASEÑA">
+          <input type="password" class="form-control" placeholder="CONTRASEÑA" formControlName="password">
         </div>
-        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary w-100">
+          Login
+        </button>
+        <div class="text-center">
+          <a routerLink="/registrate" class="text-decoration-none">¿Eres nuevo por aquí? Regístrate</a>
+        </div>
         </div>
       </form>
     </div>

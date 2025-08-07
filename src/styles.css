@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.login-bg {
+  background: #fff; 
+}
+
+.login-card {
+  width: 1100px;
+  height: 550px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(0deg, #81B7E9, #E8ECFF);
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(0deg, #81B7E9, #E8ECFF);
+  color: #fff;
+}
+
+.login-right {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.login-left img {
+  width: 80px;
+}
+
+.login-left p {
+  color: #fff;
+  font-weight: 500;
+}
+
+.form-control {
+  height: 45px;
+}
+
+.btn-primary {
+  background: #007bff;
+  border: none;
+}
+
+.imglogo{
+  width: 200px !important;
+}

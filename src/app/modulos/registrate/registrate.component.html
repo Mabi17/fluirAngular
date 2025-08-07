@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 login-bg">
+    <div class="d-flex flex-wrap login-card">
+        <div class="login-left d-flex flex-column justify-content-center align-items-center text-center p-4">
+            <img src="logo.png" alt="FLUIR Logo" class="mb-3 imglogo">
+            <p class="text-primary mt-2 fs-3">Función Lógica para el<br>Uso Inteligente del<br>Recurso</p>
+        </div>
+        <div class="login-right d-flex flex-column justify-content-center p-5">
+            <h4 class="text-primary text-center fs-2 fw-normal mb-4">REGÍSTRATE</h4>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div style="width: 70%;" class="mx-auto">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="EMAIL" formControlName="email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="NOMBRE" formControlName="fullName">
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" class="form-control" placeholder="CONTRASEÑA" formControlName="password">
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" class="form-control" placeholder="CONFIRMA TU CONTRASEÑA"
+                            formControlName="confirmPassword">
+                    </div>
+                    <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary w-100">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

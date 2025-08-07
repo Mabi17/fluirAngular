@@ -6,21 +6,22 @@
 
     <ul class="navbar-nav mx-auto d-flex flex-row gap-4">
       <li class="nav-item">
-        <a class="nav-link active fw-bold text-primary" href="#">INICIO</a>
+        <a class="nav-link active fw-bold text-primary" routerLink="/app/index">INICIO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ESTADÍSTICAS</a>
+        <a class="nav-link" href="#">PRODUCTOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">HISTÓRICO</a>
+        <a class="nav-link" href="#">COMENTARIOS</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">CONFIGURACIÓN</a>
       </li>
     </ul>
 
-    <a href="#" class="btn btn-outline-primary p-1">
+    <a href="#" (click)="logout()" class="btn btn-outline-primary p-1">
       <i class="bi bi-box-arrow-right fs-4"></i>
     </a>
   </div>
 </nav>
+
