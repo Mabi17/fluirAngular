@@ -1,0 +1,24 @@
+<div class="text-center mt-5">
+  <h3>¡Tu opinión es importante!</h3>
+  <h5>Déjanos saber cómo ha sido tu experiencia usando FLUIR</h5>
+</div>
+
+<!-- Chat container -->
+<div class="chat-container d-flex flex-column p-3 border rounded" style="height: 400px;">
+  <!-- Mensajes -->
+  <div class="chat-messages mb-3 overflow-auto" style="flex-grow: 1;">
+    <div *ngFor="let c of comentarios">
+      <div class="d-flex justify-content-start mb-2">
+        <div class="bg-light p-2 rounded shadow-sm">
+          <strong>{{ c.usuarioId }}:</strong> {{ c.texto }}
+          <small class="d-block text-muted">{{ c.fecha }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="enviarComentario()" class="d-flex">
+    <input [(ngModel)]="nuevoComentario.texto" name="comentario" class="form-control me-2" placeholder="Escribe tu comentario..." required>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+  </form>
+</div>

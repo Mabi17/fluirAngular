@@ -1,0 +1,48 @@
+<div class="container mt-4 text-center">
+
+  <div *ngIf="productos.length > 0">
+    <h4>
+    Según lo acordado en la visita de cotización, selecciona el plan que mejor se adapte a tus necesidades.
+  </h4>
+  <div class="d-flex justify-content-center">
+    <p class="mx-1">Si no has tenido una</p>
+    <a href="#contactanos" class="text-decoration-none">agenda aquí</a>
+  </div>
+    <div class="row mb-3">
+      <img src="tanque.jpg" alt="Tanque" class="img-crop">
+    </div>
+    <div class="row">
+      <div *ngFor="let p of productos" class="col-md-4">
+        <div class="card mb-4 shadow-sm producto-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ p.nombre }}</h5>
+            <p class="card-text">{{ p.descripcion }}</p>
+            <p class="card-text fw-bold">$ {{ p.costo }}</p>
+            <button class="btn btn-primary" (click)="iniciarPago(p)">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="productos.length === 0 && producto" class="row justify-content-center">
+    <h4>
+      Tu servicio actual
+    </h4>
+    <br>
+    <br>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm producto-card">
+        <div class="card-body">
+          <h5 class="card-title text-primary">{{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text fw-bold">$ {{ producto.costo }}</p>
+          <div>
+            <img src="estadisimg.png" alt="" width="90%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
