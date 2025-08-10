@@ -4,7 +4,7 @@ export interface UserDetail {
   email: string;
   roles: string[];
   phoneNumber: string;
-  twoFacotrEnabled: true;
   phoneNumberConfirmed: true;
-  accessFailedCount: 0;
+  password?: string;
+  passwordConfirmed?: string;
 }

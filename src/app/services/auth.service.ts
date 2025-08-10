@@ -10,9 +10,20 @@ import { ResetPasswordRequest } from '../interfaces/reset-password-request';
 import { ChangePasswordRequest } from '../interfaces/change-password-request';
 import { environment } from '../../environments/environment.development';
 
+export interface UserDetailDto {
+  id: string;
+  email: string;
+  fullName: string;
+  phoneNumber: string;
+  phoneNumberConfirmed: boolean;
+  password?: string;
+  passwordConfirmed?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   apiUrl: string = environment.apiUrl;
   private userKey = 'user';
@@ -36,9 +47,12 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${this.apiUrl}account/register`, data);
   }
 
-  getDetail = (): Observable<UserDetail> =>
-    this.http.get<UserDetail>(`${this.apiUrl}account/detail`);
-
+  getDetail(): Observable<UserDetail> {
+    const authData = localStorage.getItem('user');
+    const parsed = authData ? JSON.parse(authData) : '';
+    return this.http.get<UserDetail>(`${this.apiUrl}account/detail?idUsuario=${parsed.idUsuario}`);
+  }
+  
   forgotPassword = (email: string): Observable<AuthResponse> =>
     this.http.post<AuthResponse>(`${this.apiUrl}account/forgot-password`, {
       email,
@@ -57,8 +71,7 @@ export class AuthService {
     const userDetail = {
       id: decodedToken.nameid,
       fullName: decodedToken.name,
-      email: decodedToken.email,
-      roles: decodedToken.role || [],
+      email: decodedToken.email
     };
 
     return userDetail;
@@ -114,4 +127,10 @@ export class AuthService {
     const userDetail: AuthResponse = JSON.parse(user);
     return userDetail.refreshToken;
   };
+
+  updateUserDetail(userData: Partial<UserDetailDto>): Observable<UserDetailDto> {
+    const authData = localStorage.getItem('user');
+    const parsed = authData ? JSON.parse(authData) : '';
+    return this.http.put<UserDetailDto>(`${this.apiUrl}account/detail/${parsed.idUsuario}`, userData);
+  }
 }

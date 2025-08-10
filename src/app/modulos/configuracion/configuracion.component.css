@@ -1,0 +1,44 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  background-color: #f5f7fa;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 450px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 20px auto;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #4a90e2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.user-icon {
+  font-size: 40px;
+  color: white;
+}
+
+.user-info h2 {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.user-info p {
+  margin: 4px 0;
+  font-size: 1rem;
+}
+
+.user-info strong {
+  color: #555;
+}

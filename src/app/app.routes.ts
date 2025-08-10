@@ -9,6 +9,7 @@ import { ProductosComponent } from './modulos/productos/productos.component';
 import { SuccessComponent } from './modulos/success/success.component';
 import { CancelComponent } from './modulos/cancel/cancel.component';
 import { ComentariosComponent } from './modulos/comentarios/comentarios.component';
+import { ConfiguracionComponent } from './modulos/configuracion/configuracion.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -17,14 +18,14 @@ export const routes: Routes = [
   { path: 'registrate', component: RegistrateComponent },
   {
     path: 'app',
-    component: AppLayoutComponent, // Layout privado
+    component: AppLayoutComponent, 
     children: [
       { path: 'index', component: InicioFluirComponent },
       { path: 'productos', component: ProductosComponent },
       { path: 'success', component: SuccessComponent },
       { path: 'cancel', component: CancelComponent },
       { path: 'comentarios', component: ComentariosComponent },
-      //{ path: 'configuracion', component: ConfiguracionComponent },
+      { path: 'configuracion', component: ConfiguracionComponent },
     ],
   },
 ];
