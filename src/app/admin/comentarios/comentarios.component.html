@@ -1,0 +1,24 @@
+
+<!-- Titulo decoradp de administracion de comentarios -->
+
+<br>
+
+<h2 class="text-center mb-4 text-primary">Administración de comentarios</h2>
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="">Lista de comentarios</h3>
+    <button class="btn btn-primary" (click)="cargarComentarios()">Refrescar</button>
+</div>
+<div class="chat-container d-flex flex-column p-3 border rounded" style="height: 400px;">
+    <!-- Mensajes -->
+    <div class="chat-messages mb-3 overflow-auto" style="flex-grow: 1;">
+        <div *ngFor="let c of comentarios">
+            <div class="d-flex justify-content-start mb-2">
+                <div class="bg-light p-2 rounded shadow-sm">
+                    <strong>{{ c.usuarioNombre }}:</strong> {{ c.texto }}
+                    <small class="d-block text-muted">{{ c.fecha | date}}</small>
+                    <button class="btn btn-danger btn-sm mt-1" (click)="eliminarComentario(c.id)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>

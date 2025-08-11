@@ -142,6 +142,10 @@ export class AuthService {
     return this.http.put(`${this.apiUrl}Account/edit`, data);
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}Account/${id}`);
+  }
+
   resetPassword(data: ResetPasswordDTO): Observable<any> {
     return this.http.post(`https://localhost:5001/api/auth/reset-password`, data);
   }

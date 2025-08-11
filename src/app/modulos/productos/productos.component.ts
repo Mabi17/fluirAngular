@@ -7,7 +7,7 @@ import { CotizacionService } from '../../services/cotizacion.service';
 
 @Component({
   selector: 'app-productos',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })

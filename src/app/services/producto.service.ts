@@ -26,6 +26,20 @@ export class ProductoService {
     return this.http.get<Producto>(`${this.apiUrl}UsuarioProducto/producto-usuario?idUsuario=${parsed.idUsuario}`, { headers });
   }
 
+  postProducto(producto: Producto): Observable<Producto> {
+    return this.http.post<Producto>(`${this.apiUrl}Productos`, producto);
+  }
+
+  putProducto(producto: Producto): Observable<Producto> {
+    return this.http.put<Producto>(`${this.apiUrl}Productos/${producto.id}`, producto);
+  }
+
+  deleteProducto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}Productos/${id}`);
+  }
+
+  //! Comentarios ////////////////////////
+
   postComentario(comentario: Comentario): Observable<Comentario> {
     return this.http.post<Comentario>(`${this.apiUrl}Comentario`, comentario);
   }
@@ -36,6 +50,10 @@ export class ProductoService {
 
   enviarComentario(comentario: Comentario): Observable<Comentario> {
     return this.http.post<Comentario>(`${this.apiUrl}Comentario`, comentario);
+  }
+
+  eliminarComentario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}Comentario/${id}`);
   }
 
 }

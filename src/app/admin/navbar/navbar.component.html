@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded-pill px-4 shadow-sm custom-navbar mt-3">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="logo.png" alt="Logo" width="30" height="30">
+        </a>
+
+        <ul class="navbar-nav mx-auto d-flex flex-row gap-4">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active fw-bold text-primary" routerLink="/admin/dashboard">DASHBOARD</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active fw-bold text-primary"
+                    routerLink="/admin/usuarios">USUARIOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active fw-bold text-primary"
+                    routerLink="/admin/comentarios">COMENTARIOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active fw-bold text-primary"
+                    routerLink="/admin/planes">PLANES</a>
+            </li>
+        </ul>
+        
+        <a href="#" (click)="logout()" class="btn btn-outline-primary p-1">
+            <i class="bi bi-box-arrow-right fs-4"></i>
+        </a>
+        
+    </div>
+</nav>

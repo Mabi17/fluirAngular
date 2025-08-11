@@ -24,14 +24,20 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.form.value).subscribe({
       next: (response) => {
-        this.matSnackBar.open(response.message, 'Close', {
+        this.matSnackBar.open("Sesion iniciada correctamente", 'Ok', {
           duration: 5000,
           horizontalPosition: 'center',
         });
-        this.router.navigate(['/app/index']);
+        console.log(this.authService.getRoles());
+        
+        if(this.authService.getRoles()?.includes('Admin')) {
+          this.router.navigate(['/admin/dashboard']);
+        }else {
+          this.router.navigate(['/app/index']);
+        }
       },
       error: (error) => {
-        this.matSnackBar.open(error.error.message, 'Close', {
+        this.matSnackBar.open(error.error.message, 'Ok', {
           duration: 5000,
           horizontalPosition: 'center',
         });

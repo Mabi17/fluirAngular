@@ -12,17 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class ComentariosComponent {
   comentarioService = inject(ProductoService);
-comentarios: Comentario[] = [];
-nuevoComentario: Comentario = { usuarioId: '', texto: '' };
+  comentarios: Comentario[] = [];
+  nuevoComentario: Comentario = { usuarioId: '', texto: '' };
 
-ngOnInit() {
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  this.nuevoComentario.usuarioId = user.idUsuario;
+  ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.nuevoComentario.usuarioId = user.idUsuario;
 
-  this.recargarComentarios();
-}
+    this.recargarComentarios();
+  }
 
-enviarComentario(): void {
+  enviarComentario(): void {
     if (!this.nuevoComentario.texto.trim()) return;
 
     this.comentarioService.enviarComentario(this.nuevoComentario).subscribe(() => {
@@ -31,10 +31,10 @@ enviarComentario(): void {
     });
   }
 
-recargarComentarios(){
-  this.comentarioService.getComentarios().subscribe(data => {
-    this.comentarios = data;
-  });
-}
+  recargarComentarios() {
+    this.comentarioService.getComentarios().subscribe(data => {
+      this.comentarios = data;
+    });
+  }
 
 }

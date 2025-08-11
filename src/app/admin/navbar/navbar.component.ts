@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-resumen',
+  selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './resumen.component.html',
-  styleUrl: './resumen.component.css'
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class ResumenComponent {
+export class NavbarComponent {
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
