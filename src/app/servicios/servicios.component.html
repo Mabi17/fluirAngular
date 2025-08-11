@@ -55,3 +55,24 @@
   <img src="notificacion.png" alt="Decoración 4" class="img-4">
 </div>
 
+<div class="d-flex align-items-center justify-content-center bg-secundary" style="height: 100vh;">
+  <div class="text-center">
+    <div class="mt-5">
+      <p class="fs-2 text-primary fw-normal">Conoce los comentarios de nuestros clientes...</p>
+    </div>
+
+    <div class="chat-container d-flex flex-column p-3 rounded" style="height: 400px; width: 700px;">
+      <div class="chat-messages mb-3 overflow-auto" style="flex-grow: 1;">
+        <div *ngFor="let c of comentarios">
+          <div class="d-flex justify-content-start mb-2">
+            <div class="bg-light p-2 rounded shadow-sm text-start">
+              <strong>{{ c.usuarioNombre }}:</strong> {{ c.texto }}
+              <small class="d-block text-muted">{{ c.fecha }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

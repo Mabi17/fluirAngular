@@ -4,7 +4,7 @@ export interface UserDetail {
   email: string;
   roles: string[];
   phoneNumber: string;
-  phoneNumberConfirmed: true;
+  phoneNumberConfirmed: string;
   password?: string;
   passwordConfirmed?: string;
 }

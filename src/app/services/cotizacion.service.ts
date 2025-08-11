@@ -33,7 +33,7 @@ export class CotizacionService {
       .subscribe({
         next: (res) => {
           if (res.url) {
-            this.router.navigate(['/app/success']);
+            window.location.href = res.url; 
           } else {
             console.error('No se recibió la URL de sesión de Stripe');
           }

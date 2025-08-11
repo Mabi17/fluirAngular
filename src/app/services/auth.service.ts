@@ -11,13 +11,26 @@ import { ChangePasswordRequest } from '../interfaces/change-password-request';
 import { environment } from '../../environments/environment.development';
 
 export interface UserDetailDto {
-  id: string;
+  id?: string;
   email: string;
   fullName: string;
   phoneNumber: string;
-  phoneNumberConfirmed: boolean;
+  phoneNumberConfirmed: string;
   password?: string;
   passwordConfirmed?: string;
+}
+
+export interface UpdateUserDTO {
+  email?: string;
+  fullName?: string;
+  phoneNumber?: string;
+  phoneNumberConfirmed?: boolean;
+}
+
+export interface ResetPasswordDTO {
+  email: string;
+  token: string;
+  newPassword: string;
 }
 
 @Injectable({
@@ -57,9 +70,6 @@ export class AuthService {
     this.http.post<AuthResponse>(`${this.apiUrl}account/forgot-password`, {
       email,
     });
-
-  resetPassword = (data: ResetPasswordRequest): Observable<AuthResponse> =>
-    this.http.post<AuthResponse>(`${this.apiUrl}account/reset-password`, data);
 
   changePassword = (data: ChangePasswordRequest): Observable<AuthResponse> =>
     this.http.post<AuthResponse>(`${this.apiUrl}account/change-password`, data);
@@ -128,9 +138,11 @@ export class AuthService {
     return userDetail.refreshToken;
   };
 
-  updateUserDetail(userData: Partial<UserDetailDto>): Observable<UserDetailDto> {
-    const authData = localStorage.getItem('user');
-    const parsed = authData ? JSON.parse(authData) : '';
-    return this.http.put<UserDetailDto>(`${this.apiUrl}account/detail/${parsed.idUsuario}`, userData);
+  editUser(data: UserDetailDto): Observable<any> {
+    return this.http.put(`${this.apiUrl}Account/edit`, data);
+  }
+
+  resetPassword(data: ResetPasswordDTO): Observable<any> {
+    return this.http.post(`https://localhost:5001/api/auth/reset-password`, data);
   }
 }

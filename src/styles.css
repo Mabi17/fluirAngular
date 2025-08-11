@@ -50,3 +50,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .imglogo{
   width: 200px !important;
 }
+
+.bg-secundary {
+  background: linear-gradient(0deg, #81B7E9, #ffffff);;
+  border: none;
+}
