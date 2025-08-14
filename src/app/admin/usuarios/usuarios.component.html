@@ -2,14 +2,12 @@
 
     <h2 class="text-primary mb-4 text-center">Gestión de Usuarios</h2>
 
-    <!-- Botón para crear usuario -->
     <div class="mb-3 text-end">
         <button class="btn btn-success" (click)="openCreateModal()">
             <i class="bi bi-person-plus"></i> Nuevo Usuario
         </button>
     </div>
 
-    <!-- Tarjeta lista -->
     <div class="card shadow-sm mb-4">
         <div class="card-header bg-secondary text-white">
             <strong>Usuarios registrados</strong>
@@ -26,7 +24,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Fila por usuario -->
                     <tr *ngFor="let u of usuarios">
                         <td>{{ u.id }}</td>
                         <td>{{ u.fullName }}</td>
@@ -41,7 +38,6 @@
                         </td>
                     </tr>
 
-                    <!-- Mensaje cuando no hay usuarios -->
                     <tr *ngIf="usuarios?.length === 0">
                         <td colspan="5" class="text-center py-4 text-muted">No hay usuarios registrados</td>
                     </tr>
@@ -50,7 +46,6 @@
         </div>
     </div>
 
-    <!-- Modal de edición -->
     <div class="modal fade" tabindex="-1" [ngClass]="{'show d-block': editModalOpen}" *ngIf="editModalOpen">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -62,8 +57,8 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="editNombre" class="form-label">Nombre</label>
-                            <input type="text" id="editNombre" class="form-control" [(ngModel)]="selectedUsuario.fullName"
-                                name="editNombre" required />
+                            <input type="text" id="editNombre" class="form-control"
+                                [(ngModel)]="selectedUsuario.fullName" name="editNombre" required />
                         </div>
                         <div class="mb-3">
                             <label for="editEmail" class="form-label">Email</label>
@@ -72,8 +67,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="editPhone" class="form-label">Telefono</label>
-                            <input type="tel" id="editPhone" class="form-control" [(ngModel)]="selectedUsuario.phoneNumber"
-                                name="editPhone" />
+                            <input type="tel" id="editPhone" class="form-control"
+                                [(ngModel)]="selectedUsuario.phoneNumber" name="editPhone" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -86,7 +81,6 @@
         </div>
     </div>
 
-    <!-- Modal de creación
     <div class="modal fade" tabindex="-1" [ngClass]="{'show d-block': createModalOpen}" *ngIf="createModalOpen">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -97,28 +91,35 @@
                 <form (ngSubmit)="crearUsuario()" #createForm="ngForm">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="createNombre" class="form-label">Nombre</label>
-                            <input type="text" id="createNombre" class="form-control" [(ngModel)]="nuevoUsuario.fullName"
-                                name="createNombre" required />
+                            <label for="editNombre" class="form-label">Nombre</label>
+                            <input type="text" id="editNombre" class="form-control"
+                                [(ngModel)]="nuevoUsuario.fullname" name="editNombre" required />
                         </div>
                         <div class="mb-3">
-                            <label for="createEmail" class="form-label">Email</label>
+                            <label for="createEmail" class="form-label">Correo electrónico</label>
                             <input type="email" id="createEmail" class="form-control" [(ngModel)]="nuevoUsuario.email"
                                 name="createEmail" required />
                         </div>
+
                         <div class="mb-3">
-                            <label for="createPhone" class="form-label">Telefono</label>
-                            <input type="tel" id="createPhone" class="form-control" [(ngModel)]="nuevoUsuario.phoneNumber"
-                                name="createPhone" />
+                            <label for="createPassword" class="form-label">Contraseña</label>
+                            <input type="password" id="createPassword" class="form-control"
+                                [(ngModel)]="nuevoUsuario.password" name="createPassword" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="createPasswordConfirm" class="form-label">Confirmar contraseña</label>
+                            <input type="password" id="createPasswordConfirm" class="form-control"
+                                [(ngModel)]="nuevoUsuario.passwordConfirmed" name="createPasswordConfirm" required />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" (click)="closeCreateModal()">Cancelar</button>
-                        <button type="submit" class="btn btn-success" [disabled]="createForm.invalid">Crear Usuario</button>
+                        <button type="submit" class="btn btn-success" [disabled]="createForm.invalid">Crear
+                            Usuario</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div> -->
+    </div>
 
 </div>

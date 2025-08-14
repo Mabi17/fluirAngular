@@ -10,7 +10,7 @@ import { ResetPasswordRequest } from '../interfaces/reset-password-request';
 import { ChangePasswordRequest } from '../interfaces/change-password-request';
 import { environment } from '../../environments/environment.development';
 
-export interface UserDetailDto {
+export interface  UserDetailDto {
   id?: string;
   email: string;
   fullName: string;
@@ -141,7 +141,7 @@ export class AuthService {
   editUser(data: UserDetailDto): Observable<any> {
     return this.http.put(`${this.apiUrl}Account/edit`, data);
   }
-
+  
   deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}Account/${id}`);
   }

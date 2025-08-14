@@ -14,8 +14,15 @@ export class UsuariosComponent {
   authService = inject(AuthService);
   usuarios: UserDetail[] = [];
   editModalOpen: boolean = false;
-  selectedUsuario: UserDetailDto = {id: '', fullName: '', email: '', phoneNumber: '', phoneNumberConfirmed: 'false', password: '', passwordConfirmed: ''};
-
+  selectedUsuario: UserDetailDto = { id: '', fullName: '', email: '', phoneNumber: '', phoneNumberConfirmed: 'false', password: '', passwordConfirmed: '' };
+ createModalOpen: boolean= false;
+  nuevoUsuario = {
+    email: '',
+    fullname: '',
+    password: '',
+    passwordConfirmed: '',
+    roles: ['User']
+  };
 
   ngOnInit() {
     this.loadUsuarios();
@@ -41,7 +48,7 @@ export class UsuariosComponent {
     this.authService.deleteUser(id).subscribe({
       next: () => {
         this.usuarios = this.usuarios.filter(u => u.id !== id);
-        this.loadUsuarios(); 
+        this.loadUsuarios();
       },
       error: (error) => {
         console.error('Error deleting user:', error);
@@ -53,18 +60,19 @@ export class UsuariosComponent {
     if (!this.selectedUsuario.email || !this.selectedUsuario.fullName) {
       return;
     }
-    
+
     const dtoToSend = {
-    userId: this.selectedUsuario.id,  
-    email: this.selectedUsuario.email ?? '',
-    fullName: this.selectedUsuario.fullName ?? '',
-    phoneNumber: this.selectedUsuario.phoneNumber ?? '',
-    phoneNumberConfirmed: this.selectedUsuario.phoneNumberConfirmed ?? '',
-    password: undefined,
-    passwordConfirmed: undefined};
-    
+      userId: this.selectedUsuario.id,
+      email: this.selectedUsuario.email ?? '',
+      fullName: this.selectedUsuario.fullName ?? '',
+      phoneNumber: this.selectedUsuario.phoneNumber ?? '',
+      phoneNumberConfirmed: '',
+      password: undefined,
+      passwordConfirmed: undefined
+    };
+
     console.log('Updating user with payload:', dtoToSend);
-    
+
     this.authService.editUser(dtoToSend).subscribe({
       next: () => {
         this.loadUsuarios();
@@ -82,7 +90,35 @@ export class UsuariosComponent {
   }
 
   openCreateModal() {
-    //TODO 
+    this.createModalOpen = true;
+    this.nuevoUsuario = { email: '', fullname:'', password: '', passwordConfirmed: '', roles: ['User'] };
   }
 
+  crearUsuario() {
+    if (!this.nuevoUsuario.email || !this.nuevoUsuario.password || !this.nuevoUsuario.passwordConfirmed) {
+      return;
+    }
+
+    const requestPayload = {
+      email: this.nuevoUsuario.email,
+      password: this.nuevoUsuario.password,
+      passwordConfirmed: this.nuevoUsuario.passwordConfirmed,
+      fullName: this.nuevoUsuario.fullname,
+      roles: this.nuevoUsuario.roles
+    };
+
+    this.authService.register(requestPayload).subscribe({
+      next: () => {
+        this.loadUsuarios();
+        this.closeCreateModal();
+      },
+      error: (error) => {
+        console.error('Error creando usuario:', error);
+      }
+    });
+  }
+
+  closeCreateModal() {
+    this.createModalOpen = false;
+  }
 }
